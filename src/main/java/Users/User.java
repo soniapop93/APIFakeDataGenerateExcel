@@ -35,7 +35,7 @@ public class User {
                 String phoneNumber,
                 String socialInsuranceNumber,
                 String dateOfBirth,
-                Employment employment, 
+                Employment employment,
                 UserAddress userAddress,
                 String creditCardNumber,
                 UserSubscription userSubscription) {
