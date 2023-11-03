@@ -1,5 +1,6 @@
 package BloodTypes;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ public class BloodType {
     private int id;
     private String uid;
     private String type;
+    @SerializedName("rh_factor")
     private String rhFactor;
     private String group;
 

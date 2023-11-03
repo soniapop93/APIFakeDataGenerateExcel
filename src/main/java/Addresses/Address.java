@@ -1,5 +1,6 @@
 package Addresses;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,25 +10,38 @@ public class Address {
     private int id;
     private String uid;
     private String city;
+    @SerializedName("street_name")
     private String streetName;
+    @SerializedName("street_address")
     private String streetAddress;
+    @SerializedName("secondary_address")
     private String secondaryAddress;
+    @SerializedName("building_number")
     private String buildingNumber;
+    @SerializedName("mail_box")
     private String mailBox;
     private String community;
+    @SerializedName("zip_code")
     private String zipCode;
     private String zip;
     private String postcode;
+    @SerializedName("time_zone")
     private String timezone;
+    @SerializedName("street_suffix")
     private String streetSuffix;
+    @SerializedName("city_suffix")
     private String citySuffix;
+    @SerializedName("city_prefix")
     private String cityPrefix;
     private String state;
+    @SerializedName("state_abbr")
     private String stateAbbr;
     private String country;
+    @SerializedName("country_code")
     private String countryCode;
-    private long latitude;
-    private long longitude;
+    private double latitude;
+    private double longitude;
+    @SerializedName("full_address")
     private String fullAddress;
 
     public Address(
@@ -51,8 +65,8 @@ public class Address {
             String stateAbbr,
             String country,
             String countryCode,
-            long latitude,
-            long longitude,
+            double latitude,
+            double longitude,
             String fullAddress) {
         this.id = id;
         this.uid = uid;

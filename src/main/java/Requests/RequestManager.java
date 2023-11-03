@@ -1,6 +1,10 @@
 package Requests;
 
 import Addresses.Address;
+import Appliances.Appliance;
+import Banks.Bank;
+import Beers.Beer;
+import BloodTypes.BloodType;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -17,9 +21,10 @@ public class RequestManager {
     private final String userEndpoint = endpoint + "/users";
     private final String applianceEndpoint = endpoint + "/appliances";
     private final String bankEndpoint = endpoint + "/banks";
-    private final String beerEndpoint = endpoint + "beers";
-    private final String bloodTypeEndpoint = endpoint + "blood_type";
-    private final String creditCardEndpoint = endpoint + "credit_cards";
+    private final String beerEndpoint = endpoint + "/beers";
+    private final String bloodTypeEndpoint = endpoint + "/blood_types";
+    private final String creditCardEndpoint = endpoint + "/credit_cards";
+    private Gson gson = new Gson();
 
     private String getRequest(String endpoint) {
         HttpClient client = HttpClient.newHttpClient();
@@ -43,45 +48,57 @@ public class RequestManager {
 
     public Address getAddress() {
         String response = getRequest(addressEndpoint);
+        Address address = null;
 
         if (response != null) {
-            Gson gson = new Gson();
-            Address address = gson.fromJson(response, Address.class);
+            address = gson.fromJson(response, Address.class);
         }
 
         return address;
     }
 
-    public void getAppliance() {
+    public Appliance getAppliance() {
         String response = getRequest(applianceEndpoint);
+        Appliance appliance = null;
 
         if (response != null) {
-            //TODO: implement deserialization
+            appliance = gson.fromJson(response, Appliance.class);
         }
+
+        return appliance;
     }
 
-    public void getBank() {
+    public Bank getBank() {
         String response = getRequest(bankEndpoint);
+        Bank bank = null;
 
         if (response != null) {
-            //TODO: implement deserialization
+            bank = gson.fromJson(response, Bank.class);
         }
+
+        return bank;
     }
 
-    public void getBeer() {
+    public Beer getBeer() {
         String response = getRequest(beerEndpoint);
+        Beer beer = null;
 
         if (response != null) {
-            //TODO: implement deserialization
+            beer = gson.fromJson(response, Beer.class);
         }
+
+        return beer;
     }
 
-    public void getBloodType() {
+    public BloodType getBloodType() {
         String response = getRequest(bloodTypeEndpoint);
+        BloodType bloodType = null;
 
         if (response != null) {
-            //TODO: implement deserialization
+            gson.fromJson(response, BloodType.class);
         }
+
+        return bloodType;
     }
 
     public void getCreditCard() {
