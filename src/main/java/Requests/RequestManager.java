@@ -5,6 +5,8 @@ import Appliances.Appliance;
 import Banks.Bank;
 import Beers.Beer;
 import BloodTypes.BloodType;
+import CreditCards.CreditCard;
+import Users.User;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -101,19 +103,25 @@ public class RequestManager {
         return bloodType;
     }
 
-    public void getCreditCard() {
+    public CreditCard getCreditCard() {
         String response = getRequest(creditCardEndpoint);
+        CreditCard creditCard = null;
 
         if (response != null) {
-            //TODO: implement deserialization
+            gson.fromJson(response, CreditCard.class);
         }
+
+        return creditCard;
     }
 
-    public void getUser() {
+    public User getUser() {
         String response = getRequest(userEndpoint);
+        User user = null;
 
         if (response != null) {
-            //TODO: implement deserialization
+            gson.fromJson(response, User.class);
         }
+
+        return user;
     }
 }

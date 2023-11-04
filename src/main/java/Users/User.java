@@ -1,5 +1,6 @@
 package Users;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,18 +10,26 @@ public class User {
     private int id;
     private String uid;
     private String password;
+    @SerializedName("first_name")
     private String firstName;
+    @SerializedName("last_name")
     private String lastName;
     private String username;
     private String email;
     private String avatar;
     private String gender;
+    @SerializedName("phone_number")
     private String phoneNumber;
+    @SerializedName("social_insurance_number")
     private String socialInsuranceNumber;
+    @SerializedName("date_of_birth")
     private String dateOfBirth;
     private Employment employment;
+    @SerializedName("address")
     private UserAddress userAddress;
+    @SerializedName("credit_card")
     private String creditCardNumber;
+    @SerializedName("subscription")
     private UserSubscription userSubscription;
 
     public User(int id,

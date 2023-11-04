@@ -1,5 +1,6 @@
 package Users;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
 public class UserSubscription {
     private String plan;
     private String status;
+    @SerializedName("payment_method")
     private String paymentMethod;
     private String term;
 

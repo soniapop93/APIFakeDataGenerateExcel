@@ -11,6 +11,8 @@ public class Main {
         requestManager.getBank();
         requestManager.getBeer();
         requestManager.getBloodType();
+        requestManager.getCreditCard();
+        requestManager.getUser();
 
     }
 }
