@@ -97,7 +97,7 @@ public class RequestManager {
         BloodType bloodType = null;
 
         if (response != null) {
-            gson.fromJson(response, BloodType.class);
+            bloodType = gson.fromJson(response, BloodType.class);
         }
 
         return bloodType;
@@ -108,7 +108,7 @@ public class RequestManager {
         CreditCard creditCard = null;
 
         if (response != null) {
-            gson.fromJson(response, CreditCard.class);
+            creditCard = gson.fromJson(response, CreditCard.class);
         }
 
         return creditCard;
@@ -119,7 +119,7 @@ public class RequestManager {
         User user = null;
 
         if (response != null) {
-            gson.fromJson(response, User.class);
+            user = gson.fromJson(response, User.class);
         }
 
         return user;

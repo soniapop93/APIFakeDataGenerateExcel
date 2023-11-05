@@ -1,5 +1,6 @@
 package Users;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,13 +8,15 @@ import lombok.Setter;
 @Setter
 public class UserAddress {
     private String city;
+    @SerializedName("street_name")
     private String streetName;
+    @SerializedName("street_address")
     private String streetAddress;
+    @SerializedName("zip_code")
     private String zipCode;
     private String state;
     private String country;
-    private String latitude;
-    private String longitude;
+    private Coordinates coordinates;
 
     public UserAddress(String city,
                        String streetName,
@@ -21,8 +24,7 @@ public class UserAddress {
                        String zipCode,
                        String state,
                        String country,
-                       String latitude,
-                       String longitude)
+                       Coordinates coordinates)
     {
         this.city = city;
         this.streetName = streetName;
@@ -30,7 +32,6 @@ public class UserAddress {
         this.zipCode = zipCode;
         this.state = state;
         this.country = country;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.coordinates = coordinates;
     }
 }

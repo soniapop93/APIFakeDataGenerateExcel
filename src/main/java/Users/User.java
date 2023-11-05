@@ -28,7 +28,7 @@ public class User {
     @SerializedName("address")
     private UserAddress userAddress;
     @SerializedName("credit_card")
-    private String creditCardNumber;
+    private CreditCard creditCard;
     @SerializedName("subscription")
     private UserSubscription userSubscription;
 
@@ -46,7 +46,7 @@ public class User {
                 String dateOfBirth,
                 Employment employment,
                 UserAddress userAddress,
-                String creditCardNumber,
+                CreditCard creditCard,
                 UserSubscription userSubscription) {
         this.id = id;
         this.uid = uid;
@@ -62,7 +62,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.employment = employment;
         this.userAddress = userAddress;
-        this.creditCardNumber = creditCardNumber;
+        this.creditCard = creditCard;
         this.userSubscription = userSubscription;
     }
 }
