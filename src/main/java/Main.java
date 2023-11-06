@@ -1,5 +1,9 @@
 import Addresses.Address;
+import Beers.Beer;
+import Excel.ExcelLogic;
 import Requests.RequestManager;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +16,12 @@ public class Main {
 //        requestManager.getBeer();
 //        requestManager.getBloodType();
 //        requestManager.getCreditCard();
-        requestManager.getUser();
+        //requestManager.getUser();
 
+        //ExcelLogic excelLogic = new ExcelLogic();
+
+        //excelLogic.generateExcel();
+        ArrayList<Beer> beers = requestManager.getBeers();
+        int i = 0;
     }
 }

@@ -14,6 +14,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 
 public class RequestManager {
 
@@ -27,6 +28,8 @@ public class RequestManager {
     private final String bloodTypeEndpoint = endpoint + "/blood_types";
     private final String creditCardEndpoint = endpoint + "/credit_cards";
     private Gson gson = new Gson();
+
+    private int numberOfRequests = 10;
 
     private String getRequest(String endpoint) {
         HttpClient client = HttpClient.newHttpClient();
@@ -48,7 +51,7 @@ public class RequestManager {
         return null;
     }
 
-    public Address getAddress() {
+    private Address getAddress() {
         String response = getRequest(addressEndpoint);
         Address address = null;
 
@@ -59,7 +62,7 @@ public class RequestManager {
         return address;
     }
 
-    public Appliance getAppliance() {
+    private Appliance getAppliance() {
         String response = getRequest(applianceEndpoint);
         Appliance appliance = null;
 
@@ -70,7 +73,7 @@ public class RequestManager {
         return appliance;
     }
 
-    public Bank getBank() {
+    private Bank getBank() {
         String response = getRequest(bankEndpoint);
         Bank bank = null;
 
@@ -81,7 +84,7 @@ public class RequestManager {
         return bank;
     }
 
-    public Beer getBeer() {
+    private Beer getBeer() {
         String response = getRequest(beerEndpoint);
         Beer beer = null;
 
@@ -92,7 +95,7 @@ public class RequestManager {
         return beer;
     }
 
-    public BloodType getBloodType() {
+    private BloodType getBloodType() {
         String response = getRequest(bloodTypeEndpoint);
         BloodType bloodType = null;
 
@@ -103,7 +106,7 @@ public class RequestManager {
         return bloodType;
     }
 
-    public CreditCard getCreditCard() {
+    private CreditCard getCreditCard() {
         String response = getRequest(creditCardEndpoint);
         CreditCard creditCard = null;
 
@@ -114,7 +117,7 @@ public class RequestManager {
         return creditCard;
     }
 
-    public User getUser() {
+    private User getUser() {
         String response = getRequest(userEndpoint);
         User user = null;
 
@@ -123,5 +126,110 @@ public class RequestManager {
         }
 
         return user;
+    }
+
+    public ArrayList<Beer> getBeers() {
+        ArrayList<Beer> beers = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRequests; i++) {
+            beers.add(getBeer());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return beers;
+    }
+
+    public ArrayList<Address> getAddresses() {
+        ArrayList<Address> addresses = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRequests; i++) {
+            addresses.add(getAddress());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return addresses;
+    }
+
+    public ArrayList<Appliance> getAppliances() {
+        ArrayList<Appliance> appliances = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRequests; i++) {
+            appliances.add(getAppliance());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return appliances;
+    }
+
+    public ArrayList<Bank> getBanks() {
+        ArrayList<Bank> banks = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRequests; i++) {
+            banks.add(getBank());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return banks;
+    }
+
+    public ArrayList<BloodType> getBloodTypes() {
+        ArrayList<BloodType> bloodTypes = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRequests; i++) {
+            bloodTypes.add(getBloodType());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return bloodTypes;
+    }
+
+    public ArrayList<CreditCard> getCreditCards() {
+        ArrayList<CreditCard> creditCards = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRequests; i++) {
+            creditCards.add(getCreditCard());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return creditCards;
+    }
+
+    public ArrayList<User> getUsers() {
+        ArrayList<User> users = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRequests; i++) {
+            users.add(getUser());
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return users;
     }
 }
