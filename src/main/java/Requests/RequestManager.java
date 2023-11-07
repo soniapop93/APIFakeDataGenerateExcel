@@ -31,6 +31,8 @@ public class RequestManager {
 
     private int numberOfRequests = 3;
 
+    private int threadSleepValue = 1000;
+
     private String getRequest(String endpoint) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endpoint)).build();
@@ -134,7 +136,7 @@ public class RequestManager {
         for (int i = 0; i < numberOfRequests; i++) {
             beers.add(getBeer());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(threadSleepValue);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -149,7 +151,7 @@ public class RequestManager {
         for (int i = 0; i < numberOfRequests; i++) {
             addresses.add(getAddress());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(threadSleepValue);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -164,7 +166,7 @@ public class RequestManager {
         for (int i = 0; i < numberOfRequests; i++) {
             appliances.add(getAppliance());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(threadSleepValue);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -179,7 +181,7 @@ public class RequestManager {
         for (int i = 0; i < numberOfRequests; i++) {
             banks.add(getBank());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(threadSleepValue);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -194,7 +196,7 @@ public class RequestManager {
         for (int i = 0; i < numberOfRequests; i++) {
             bloodTypes.add(getBloodType());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(threadSleepValue);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -209,7 +211,7 @@ public class RequestManager {
         for (int i = 0; i < numberOfRequests; i++) {
             creditCards.add(getCreditCard());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(threadSleepValue);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -224,7 +226,7 @@ public class RequestManager {
         for (int i = 0; i < numberOfRequests; i++) {
             users.add(getUser());
             try {
-                Thread.sleep(5000);
+                Thread.sleep(threadSleepValue);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

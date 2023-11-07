@@ -15,10 +15,10 @@ public class ExcelLogic {
     HSSFWorkbook workbook = new HSSFWorkbook();
     private String filePath = "";
 
-    public void generateExcel(ArrayList<Beer> beers) {
+    public void generateExcel(ArrayList<Beer> beers, String sheetName) {
 
         try {
-            HSSFSheet sheet = createSheet("");
+            HSSFSheet sheet = createSheet(sheetName);
             addDataBeers(sheet, beers);
             OutputStream file = new FileOutputStream(filePath);
             try {
@@ -58,7 +58,7 @@ public class ExcelLogic {
 
         for (int i = 0; i < beers.size(); i++)
         {
-            HSSFRow row = sheet.createRow(i);
+            HSSFRow row = sheet.createRow(i + 1);
 
             row.createCell(0).setCellValue(String.valueOf(beers.get(i).getId()));
             row.createCell(1).setCellValue(beers.get(i).getUid());

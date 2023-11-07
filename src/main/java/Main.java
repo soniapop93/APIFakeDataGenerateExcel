@@ -20,9 +20,7 @@ public class Main {
 
         ExcelLogic excelLogic = new ExcelLogic();
 
-
         ArrayList<Beer> beers = requestManager.getBeers();
-        excelLogic.generateExcel(beers);
-        int i = 0;
+        excelLogic.generateExcel(beers, "Beers");
     }
 }
