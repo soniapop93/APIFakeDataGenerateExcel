@@ -18,10 +18,11 @@ public class Main {
 //        requestManager.getCreditCard();
         //requestManager.getUser();
 
-        //ExcelLogic excelLogic = new ExcelLogic();
+        ExcelLogic excelLogic = new ExcelLogic();
 
-        //excelLogic.generateExcel();
+
         ArrayList<Beer> beers = requestManager.getBeers();
+        excelLogic.generateExcel(beers);
         int i = 0;
     }
 }
