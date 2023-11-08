@@ -21,6 +21,6 @@ public class Main {
         ExcelLogic excelLogic = new ExcelLogic();
 
         ArrayList<Beer> beers = requestManager.getBeers();
-        excelLogic.generateExcel(beers, "Beers");
+        //excelLogic.generateExcel(beers, "Beers");
     }
 }
