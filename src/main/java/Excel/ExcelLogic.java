@@ -1,8 +1,11 @@
 package Excel;
 
 import Addresses.Address;
+import Appliances.Appliance;
 import Banks.Bank;
 import Beers.Beer;
+import BloodTypes.BloodType;
+import CreditCards.CreditCard;
 import Requests.RequestsData;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -25,11 +28,15 @@ public class ExcelLogic {
             // Addresses
             addDataAddresses(createSheet(sheetNames[0]), requestsData.getAddresses());
             // Appliances
-
+            addDataAppliances(createSheet(sheetNames[1]), requestsData.getAppliances());
             // Banks
             addDataBank(createSheet(sheetNames[2]), requestsData.getBanks());
             // Beers
             addDataBeers(createSheet(sheetNames[3]), requestsData.getBeers());
+            // Blood Types
+            addDataBloodTypes(createSheet(sheetNames[4]), requestsData.getBloodTypes());
+            // Credit Cards
+            addDataCreditCards(createSheet(sheetNames[5]), requestsData.getCreditCards());
 
             OutputStream file = new FileOutputStream(filePath);
             try {
@@ -107,6 +114,25 @@ public class ExcelLogic {
         }
     }
 
+    private void addDataAppliances(HSSFSheet sheet, ArrayList<Appliance> appliances)
+    {
+        HSSFRow rowhead = sheet.createRow(0);
+        rowhead.createCell(0).setCellValue("ID");
+        rowhead.createCell(1).setCellValue("UID");
+        rowhead.createCell(2).setCellValue("Brand");
+        rowhead.createCell(3).setCellValue("Equipment");
+
+        for (int i = 0; i < appliances.size(); i++)
+        {
+            HSSFRow row = sheet.createRow(i + 1);
+
+            row.createCell(0).setCellValue(String.valueOf(appliances.get(i).getId()));
+            row.createCell(1).setCellValue(appliances.get(i).getUid());
+            row.createCell(2).setCellValue(appliances.get(i).getBrand());
+            row.createCell(3).setCellValue(appliances.get(i).getEquipment());
+        }
+    }
+
     private void addDataBeers(HSSFSheet sheet, ArrayList<Beer> beers)
     {
         HSSFRow rowhead = sheet.createRow(0);
@@ -160,6 +186,48 @@ public class ExcelLogic {
             row.createCell(3).setCellValue(banks.get(i).getBankName());
             row.createCell(4).setCellValue(banks.get(i).getRoutingNumber());
             row.createCell(5).setCellValue(banks.get(i).getSwiftBic());
+        }
+    }
+
+    private void addDataBloodTypes(HSSFSheet sheet, ArrayList<BloodType> bloodTypes)
+    {
+        HSSFRow rowhead = sheet.createRow(0);
+        rowhead.createCell(0).setCellValue("ID");
+        rowhead.createCell(1).setCellValue("UID");
+        rowhead.createCell(2).setCellValue("Type");
+        rowhead.createCell(3).setCellValue("RH Factor");
+        rowhead.createCell(4).setCellValue("Group");
+
+        for (int i = 0; i < bloodTypes.size(); i++)
+        {
+            HSSFRow row = sheet.createRow(i + 1);
+
+            row.createCell(0).setCellValue(String.valueOf(bloodTypes.get(i).getId()));
+            row.createCell(1).setCellValue(bloodTypes.get(i).getUid());
+            row.createCell(2).setCellValue(bloodTypes.get(i).getType());
+            row.createCell(3).setCellValue(bloodTypes.get(i).getRhFactor());
+            row.createCell(4).setCellValue(bloodTypes.get(i).getGroup());
+        }
+    }
+
+    private void addDataCreditCards(HSSFSheet sheet, ArrayList<CreditCard> creditCards)
+    {
+        HSSFRow rowhead = sheet.createRow(0);
+        rowhead.createCell(0).setCellValue("ID");
+        rowhead.createCell(1).setCellValue("UID");
+        rowhead.createCell(2).setCellValue("Credit Card Number");
+        rowhead.createCell(3).setCellValue("Credit Card Expiry Date");
+        rowhead.createCell(4).setCellValue("Credit Card Type");
+
+        for (int i = 0; i < creditCards.size(); i++)
+        {
+            HSSFRow row = sheet.createRow(i + 1);
+
+            row.createCell(0).setCellValue(String.valueOf(creditCards.get(i).getId()));
+            row.createCell(1).setCellValue(creditCards.get(i).getUid());
+            row.createCell(2).setCellValue(creditCards.get(i).getCreditCardNumber());
+            row.createCell(3).setCellValue(creditCards.get(i).getCreditCardExpiryDate());
+            row.createCell(4).setCellValue(creditCards.get(i).getCreditCardType());
         }
     }
 }

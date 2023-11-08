@@ -5,7 +5,7 @@ import Appliances.Appliance;
 import Banks.Bank;
 import Beers.Beer;
 import BloodTypes.BloodType;
-import Users.CreditCard;
+import CreditCards.CreditCard;
 import Users.User;
 import lombok.Getter;
 import lombok.Setter;
