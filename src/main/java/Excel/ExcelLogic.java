@@ -7,6 +7,7 @@ import Beers.Beer;
 import BloodTypes.BloodType;
 import CreditCards.CreditCard;
 import Requests.RequestsData;
+import Users.User;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -23,7 +24,7 @@ public class ExcelLogic {
 
     private String[] sheetNames = {"Addresses","Appliances", "Banks", "Beers", "Blood types", "Credit Cards", "Users"};
 
-    public void generateExcel(RequestsData requestsData, String sheetName) {
+    public void generateExcel(RequestsData requestsData) {
         try {
             // Addresses
             addDataAddresses(createSheet(sheetNames[0]), requestsData.getAddresses());
@@ -37,6 +38,8 @@ public class ExcelLogic {
             addDataBloodTypes(createSheet(sheetNames[4]), requestsData.getBloodTypes());
             // Credit Cards
             addDataCreditCards(createSheet(sheetNames[5]), requestsData.getCreditCards());
+            // Users
+            addDataUsers(createSheet(sheetNames[6]), requestsData.getUsers());
 
             OutputStream file = new FileOutputStream(filePath);
             try {
@@ -228,6 +231,70 @@ public class ExcelLogic {
             row.createCell(2).setCellValue(creditCards.get(i).getCreditCardNumber());
             row.createCell(3).setCellValue(creditCards.get(i).getCreditCardExpiryDate());
             row.createCell(4).setCellValue(creditCards.get(i).getCreditCardType());
+        }
+    }
+
+    private void addDataUsers(HSSFSheet sheet, ArrayList<User> users) {
+        HSSFRow rowhead = sheet.createRow(0);
+        rowhead.createCell(0).setCellValue("ID");
+        rowhead.createCell(1).setCellValue("UID");
+        rowhead.createCell(2).setCellValue("Password");
+        rowhead.createCell(3).setCellValue("First Name");
+        rowhead.createCell(4).setCellValue("Last Name");
+        rowhead.createCell(5).setCellValue("Username");
+        rowhead.createCell(6).setCellValue("Email");
+        rowhead.createCell(7).setCellValue("Avatar");
+        rowhead.createCell(8).setCellValue("Gender");
+        rowhead.createCell(9).setCellValue("Phone Number");
+        rowhead.createCell(10).setCellValue("Social Insurance Number");
+        rowhead.createCell(11).setCellValue("Date Of Birth");
+        rowhead.createCell(12).setCellValue("Employment title");
+        rowhead.createCell(13).setCellValue("Employment Key Skill");
+        rowhead.createCell(14).setCellValue("City");
+        rowhead.createCell(15).setCellValue("Street name");
+        rowhead.createCell(16).setCellValue("Street Address");
+        rowhead.createCell(17).setCellValue("Zip Code");
+        rowhead.createCell(18).setCellValue("State");
+        rowhead.createCell(19).setCellValue("Country");
+        rowhead.createCell(20).setCellValue("Latitude");
+        rowhead.createCell(21).setCellValue("Longitude");
+        rowhead.createCell(22).setCellValue("Credit Card Number");
+        rowhead.createCell(23).setCellValue("Subscription plan");
+        rowhead.createCell(24).setCellValue("Subscription status");
+        rowhead.createCell(25).setCellValue("Subscription payment method");
+        rowhead.createCell(26).setCellValue("Subscription term");
+
+        for (int i = 0; i < users.size(); i++)
+        {
+            HSSFRow row = sheet.createRow(i + 1);
+
+            row.createCell(0).setCellValue(String.valueOf(users.get(i).getId()));
+            row.createCell(1).setCellValue(users.get(i).getUid());
+            row.createCell(2).setCellValue(users.get(i).getPassword());
+            row.createCell(3).setCellValue(users.get(i).getFirstName());
+            row.createCell(4).setCellValue(users.get(i).getLastName());
+            row.createCell(5).setCellValue(users.get(i).getUsername());
+            row.createCell(6).setCellValue(users.get(i).getEmail());
+            row.createCell(7).setCellValue(users.get(i).getAvatar());
+            row.createCell(8).setCellValue(users.get(i).getGender());
+            row.createCell(9).setCellValue(users.get(i).getPhoneNumber());
+            row.createCell(10).setCellValue(users.get(i).getSocialInsuranceNumber());
+            row.createCell(11).setCellValue(users.get(i).getDateOfBirth());
+            row.createCell(12).setCellValue(users.get(i).getEmployment().getTitle());
+            row.createCell(13).setCellValue(users.get(i).getEmployment().getKeySkill());
+            row.createCell(14).setCellValue(users.get(i).getUserAddress().getCity());
+            row.createCell(15).setCellValue(users.get(i).getUserAddress().getStreetName());
+            row.createCell(16).setCellValue(users.get(i).getUserAddress().getStreetAddress());
+            row.createCell(17).setCellValue(users.get(i).getUserAddress().getZipCode());
+            row.createCell(18).setCellValue(users.get(i).getUserAddress().getState());
+            row.createCell(19).setCellValue(users.get(i).getUserAddress().getCountry());
+            row.createCell(20).setCellValue(users.get(i).getUserAddress().getCoordinates().getLatitude());
+            row.createCell(21).setCellValue(users.get(i).getUserAddress().getCoordinates().getLongitude());
+            row.createCell(22).setCellValue(users.get(i).getCreditCard().getCcNumber());
+            row.createCell(23).setCellValue(users.get(i).getUserSubscription().getPlan());
+            row.createCell(24).setCellValue(users.get(i).getUserSubscription().getStatus());
+            row.createCell(25).setCellValue(users.get(i).getUserSubscription().getPaymentMethod());
+            row.createCell(26).setCellValue(users.get(i).getUserSubscription().getTerm());
         }
     }
 }

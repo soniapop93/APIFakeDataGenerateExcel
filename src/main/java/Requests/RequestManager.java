@@ -29,7 +29,7 @@ public class RequestManager {
     private final String creditCardEndpoint = endpoint + "/credit_cards";
     private Gson gson = new Gson();
 
-    private int numberOfRequests = 3;
+    private int numberOfRequests = 10;
 
     private int threadSleepValue = 1000;
 
