@@ -20,9 +20,12 @@ import java.util.ArrayList;
 
 public class ExcelLogic {
     HSSFWorkbook workbook = new HSSFWorkbook();
-    private String filePath = "";
-
+    private String filePath;
     private String[] sheetNames = {"Addresses","Appliances", "Banks", "Beers", "Blood types", "Credit Cards", "Users"};
+
+    public ExcelLogic(String filePath) {
+        this.filePath = filePath;
+    }
 
     public void generateExcel(RequestsData requestsData) {
         try {

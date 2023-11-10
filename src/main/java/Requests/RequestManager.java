@@ -28,10 +28,12 @@ public class RequestManager {
     private final String bloodTypeEndpoint = endpoint + "/blood_types";
     private final String creditCardEndpoint = endpoint + "/credit_cards";
     private Gson gson = new Gson();
-
-    private int numberOfRequests = 10;
-
+    private int numberOfRequests;
     private int threadSleepValue = 1000;
+
+    public RequestManager(int numberOfRequests) {
+        this.numberOfRequests = numberOfRequests;
+    }
 
     private String getRequest(String endpoint) {
         HttpClient client = HttpClient.newHttpClient();
